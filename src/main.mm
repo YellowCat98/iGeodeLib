@@ -1,4 +1,5 @@
-#import <Geode/geode.hpp>
+#import <Geode/Geode.hpp>
+#import <Geode/Modify/MenuLayer.hpp>
 
 // Use the $modify macro to modify MenuLayer
 $modify(MenuLayer)
