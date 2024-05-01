@@ -1,4 +1,4 @@
-#import <Geode/geode.hpp>
+#import <Geode/Geode.hpp>
 #include "setFPS.h"
 #import <cocos2d.h> // hopefully it works
 
