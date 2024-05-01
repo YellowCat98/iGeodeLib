@@ -22,4 +22,4 @@ class $modify(MyMenuLayer, MenuLayer) {
         sprintf(text, "FPS: %d", currentFPS);
         fpsLabel->setString(text);
     }
-}
+};
