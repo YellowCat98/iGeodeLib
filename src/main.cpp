@@ -6,7 +6,7 @@ using namespace geode::prelude;
 class $modify(MyMenuLayer, MenuLayer) {
     bool init() {
         if (MenuLayer::init()) return false;
-        CCLabelBMFont* fpsLabel = CCLabelBMFont::create("FPS: ", "bigFont.fnt");
+        auto fpsLabel = CCLabelBMFont::create("FPS: ", "bigFont.fnt");
         this->addChild(fpsLabel);
 
         this->scheuleUpdate();
