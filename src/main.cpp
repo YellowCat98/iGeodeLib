@@ -16,7 +16,7 @@ public:
     void onMoreGames(CCObject*) {
         setFPS(144);
     }
-    void MyMenuLayer::update(float dt) {
+    void update(float dt) {
         int currentFPS = (int)(1.0f / dt);
 
         char text[10];
