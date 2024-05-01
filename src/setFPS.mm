@@ -8,5 +8,5 @@ using namespace cocos2d;
 // i never coded in objective c btw
 
 void setFPS(int fps) {
-    [[CCDirector sharedDirector] setAnimationInterval:1.0f / fps];
+    cocos2d::CCDirector::sharedDirector()->setAnimationInterval(1.0f / fps);
 }
