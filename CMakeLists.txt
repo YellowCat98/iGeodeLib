@@ -15,9 +15,7 @@ if(${GEODE_TARGET_PLATFORM} STREQUAL "iOS")
 endif()
 
 add_library(${PROJECT_NAME} SHARED
-    src/main.cpp
-    src/setFPS.mm
-    src/setFPS.h
+    src/main.mm
 )
 
 if (NOT DEFINED ENV{GEODE_SDK})
