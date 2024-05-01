@@ -1,6 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
-#include "setFPS"
+#include "setFPS.h"
 using namespace geode::prelude;
 
 
