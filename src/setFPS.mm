@@ -1,5 +1,6 @@
 #import <Geode/geode.hpp>
 #include "setFPS.h"
+#import <cocos2d.h> // hopefully it works
 
 using namespace geode::prelude;
 
