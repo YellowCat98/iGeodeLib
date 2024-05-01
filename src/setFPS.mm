@@ -3,6 +3,7 @@
 #import <cocos2d.h> // hopefully it works
 
 using namespace geode::prelude;
+using namespace cocos2d;
 
 // i never coded in objective c btw
 
