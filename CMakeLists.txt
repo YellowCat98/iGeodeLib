@@ -16,7 +16,7 @@ endif()
 
 add_library(${PROJECT_NAME} SHARED
     src/main.cpp
-    # Add your cpp files here
+    src/setFPS.mm
 )
 
 if (NOT DEFINED ENV{GEODE_SDK})

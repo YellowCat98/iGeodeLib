@@ -1,8 +1,9 @@
 #include <Geode/Geode.hpp>
-
+#include <Geode/modify/MenuLayer.hpp>
+#include "setFPS"
 using namespace geode::prelude;
 
-#include <Geode/modify/MenuLayer.hpp>
+
 class $modify(MyMenuLayer, MenuLayer) {
 	bool init() {
 		if (!MenuLayer::init()) {
@@ -26,6 +27,6 @@ class $modify(MyMenuLayer, MenuLayer) {
 	}
 
 	void onMyButton(CCObject*) {
-		FLAlertLayer::create("Geode", "Hello from my custom mod!", "OK")->show();
+		setFPS(144);
 	}
 };
