@@ -8,7 +8,7 @@ public:
     bool init() {
         if (!MenuLayer::init()) return false;
         
-        auto label = Label::createWithBMFont("bigFont.fnt", "");
+        auto label = CCLabelBMFont::create("fps", "bigFont.fnt");
         label->setPosition(Vec2(100, 100)); // Adjust position as needed
         this->addChild(label);
 
