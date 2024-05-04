@@ -4,15 +4,19 @@
 using namespace geode::prelude;
 
 class $modify(MenuLayer) {
+public:
     bool init() {
         if (!MenuLayer::init()) return false;
-        auto label = CCLabelBMFont::create(" ", "bigFont.fnt");
+        
+        auto label = Label::createWithBMFont("bigFont.fnt", "");
+        label->setPosition(Vec2(100, 100)); // Adjust position as needed
         this->addChild(label);
 
         this->schedule([=](float dt) {
-            int fps = CCDirector::sharedDirector()->getFrameRate();
-            label->setString(StringUtils::format("FPS %d", fps));
-        }, "update fps");
+            int fps = Director::getInstance()->getFrameRate();
+            label->setString(fmt::format("FPS {}", fps));
+        }, "update_fps");
+
         return true;
     }
 };
