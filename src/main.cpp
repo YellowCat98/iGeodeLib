@@ -15,4 +15,4 @@ class $modify(MenuLayer) {
         }, "update fps");
         return true;
     }
-}
+};
