@@ -6,7 +6,7 @@ using namespace geode::prelude;
 class $modify(MenuLayer) {
     bool init() {
         if (!MenuLayer::init()) return false;
-        auto label = Label::createWithBMFont("bigFont.fnt", "");
+        auto label = CCLabelBMFont::create(" ", "bigFont.fnt");
         this->addChild(label);
 
         this->schedule([=](float dt) {
