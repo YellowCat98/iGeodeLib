@@ -3,20 +3,32 @@
 
 using namespace geode::prelude;
 
-class $modify(MenuLayer) {
+#include <Geode/Geode.hpp>
+#include "cocos2d.h"
+#include "fmt/format.h"
+
+using namespace cocos2d;
+using namespace geode::prelude;
+
+class $modify(MyMenuLayer, MenuLayer) {
 public:
     bool init() {
         if (!MenuLayer::init()) return false;
-        
-        auto label = CCLabelBMFont::create("fps", "bigFont.fnt");
-        label->setPosition(Vec2(100, 100)); // Adjust position as needed
+
+        auto label = CCLabelBMFont::create(" ", "bigFont.fnt");
+        label->setPosition(ccp(100, 100)); // Adjust position as needed
+        label->setID("fps-label");
         this->addChild(label);
 
-        this->schedule([=](float dt) {
-            int fps = Director::getInstance()->getFrameRate();
-            label->setString(fmt::format("FPS {}", fps));
-        }, "update_fps");
-
+        this->schedule(schedule_selector(MyMenuLayer::updateFPS), 1.0f); // Schedule update
         return true;
+    }
+
+    void updateFPS(float dt) {
+        int fps = CCDirector::sharedDirector()->getFrameRate();
+        auto label = this->getChildByIDRecursive("fps-label");
+        if (label) {
+            label->setString(fmt::format("FPS {}", fps).c_str());
+        }
     }
 };
