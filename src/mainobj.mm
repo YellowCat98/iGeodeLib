@@ -23,25 +23,37 @@ void showAlert(const char *title, const char *message) {
     [rootViewController presentViewController:alertController animated:YES completion:nil];
 }
 
-void pickImage() {
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+class ImagePickerDelegate : public NSObject<UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+public:
+    void imagePickerControllerDidCancel(UIImagePickerController *picker) override {
+        [picker dismissViewControllerAnimated:YES completion:nil];
+    }
 
-
-    imagePicker.delegate = (id<UIImagePickerControllerDelegate, UINavigationControllerDelegate>)^(UIImagePickerController *picker, NSDictionary<UIImagePickerControllerInfoKey, id> *info) {
+    void imagePickerController(UIImagePickerController *picker, NSDictionary<UIImagePickerControllerInfoKey, id> *info) override {
         NSString *mediaType = info[UIImagePickerControllerMediaType];
         if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
             UIImage *selectedImage = info[UIImagePickerControllerOriginalImage];
             NSURL *imageURL = info[UIImagePickerControllerImageURL];
             NSString *imageName = [imageURL lastPathComponent];
-            
+
             showAlert("Selected Image", [imageName UTF8String]);
         }
-        
+
         [picker dismissViewControllerAnimated:YES completion:nil];
-    };
-    
+    }
+};
+
+// i despise objective c++
+
+void pickImage() {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+
+    // Create an instance of ImagePickerDelegate and assign it as the delegate of the image picker
+    ImagePickerDelegate *pickerDelegate = [ImagePickerDelegate new];
+    imagePicker.delegate = pickerDelegate;
+
     [rootViewController presentViewController:imagePicker animated:YES completion:nil];
 }
