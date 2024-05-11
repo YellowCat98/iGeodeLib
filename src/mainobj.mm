@@ -1,4 +1,5 @@
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 #include "main.hpp"
 
 void showAlert(const char *title, const char *message) {
@@ -25,20 +26,22 @@ void showAlert(const char *title, const char *message) {
 void pickImage() {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-
+    
     UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
 
-    imagePicker.delegate = ^(UIImagePickerController *picker, NSDictionary<UIImagePickerControllerInfoKey, id> *info) {
-        NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
-        if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-            UIImage *selectedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-            NSURL *imageURL = [info objectForKey:UIImagePickerControllerImageURL];
-            NSString *imageName = [[imageURL path] lastPathComponent];
 
+    imagePicker.delegate = (id<UIImagePickerControllerDelegate, UINavigationControllerDelegate>)^(UIImagePickerController *picker, NSDictionary<UIImagePickerControllerInfoKey, id> *info) {
+        NSString *mediaType = info[UIImagePickerControllerMediaType];
+        if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+            UIImage *selectedImage = info[UIImagePickerControllerOriginalImage];
+            NSURL *imageURL = info[UIImagePickerControllerImageURL];
+            NSString *imageName = [imageURL lastPathComponent];
+            
             showAlert("Selected Image", [imageName UTF8String]);
         }
-
+        
         [picker dismissViewControllerAnimated:YES completion:nil];
     };
+    
     [rootViewController presentViewController:imagePicker animated:YES completion:nil];
 }
