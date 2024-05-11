@@ -7,6 +7,6 @@ using namespace geode::prelude;
 
 class $modify(MenuLayer) {
     void onMoreGames(CCObject*) {
-        
+        std::string path = Mod::get()->getResourcesDir() / "geode-logo.png";
     }
 };
