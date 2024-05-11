@@ -6,6 +6,6 @@ using namespace geode::prelude;
 
 class $modify(MenuLayer) {
         void onMoreGames(CCObject*) {
-        showAlert("Hi", "hello");
+        pickImage();
     }
 };
