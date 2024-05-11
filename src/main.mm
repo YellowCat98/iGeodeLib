@@ -12,5 +12,6 @@ NSString* to_nsstring(const std::string& str) {
 class $modify(MenuLayer) {
     void onMoreGames(CCObject*) {
         std::string path = Mod::get()->getResourcesDir() / "geode-logo.png";
+        NSString *iconPath = to_sstring(path);
     }
 };
