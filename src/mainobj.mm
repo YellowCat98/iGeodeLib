@@ -1,15 +1,16 @@
 #import <UIKit/UIKit.h>
 #include "main.hpp"
 
-void showAlert(const char *title, const char *message) {
+void showAlert(const char *title, const char *message, const char *Btn) {
     NSString *titleString = [NSString stringWithUTF8String:title];
     NSString *messageString = [NSString stringWithUTF8String:message];
+    NSString *btnString = [NSString stringWithUTF8String:Btn]
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:titleString
                                                                              message:messageString
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:btnString
                                                        style:UIAlertActionStyleDefault
                                                      handler:nil];
     
