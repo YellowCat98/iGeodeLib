@@ -31,20 +31,26 @@ void pickImage() {
     
     UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
     
-    imagePicker.delegate = (id<UINavigationControllerDelegate, UIImagePickerControllerDelegate>)^(void){
-        return (void)^(UIImagePickerController *picker, NSDictionary<UIImagePickerControllerInfoKey, id> *info) {
-            NSString *mediaType = info[UIImagePickerControllerMediaType];
-            if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-                UIImage *selectedImage = info[UIImagePickerControllerOriginalImage];
-                NSURL *imageURL = info[UIImagePickerControllerImageURL];
-                NSString *imageName = [imageURL lastPathComponent];
-                
-                showAlert("Selected Image", [imageName UTF8String]);
-            }
-            
-            [picker dismissViewControllerAnimated:YES completion:nil];
-        };
-    }();
+    // Define a block type for the delegate
+    typedef void (^ImagePickerCompletionBlock)(UIImagePickerController *picker, NSDictionary<UIImagePickerControllerInfoKey, id> *info);
     
+    // Create the block for delegate
+    ImagePickerCompletionBlock completionBlock = ^(UIImagePickerController *picker, NSDictionary<UIImagePickerControllerInfoKey, id> *info) {
+        NSString *mediaType = info[UIImagePickerControllerMediaType];
+        if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+            UIImage *selectedImage = info[UIImagePickerControllerOriginalImage];
+            NSURL *imageURL = info[UIImagePickerControllerImageURL];
+            NSString *imageName = [imageURL lastPathComponent];
+            
+            showAlert("Selected Image", [imageName UTF8String]);
+        }
+        
+        [picker dismissViewControllerAnimated:YES completion:nil];
+    };
+    
+    // Assign the block to the delegate
+    imagePicker.delegate = (id<UINavigationControllerDelegate, UIImagePickerControllerDelegate>)completionBlock;
+    
+    // Present the image picker
     [rootViewController presentViewController:imagePicker animated:YES completion:nil];
 }
