@@ -8,7 +8,7 @@
 	"description": "This mod lets you change your fps on iOS!",
 	"resources": {
 		"files": [
-			"geode-logo.png"
+			"resources/geode-logo.png"
 		]
 	}
 }

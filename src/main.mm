@@ -12,7 +12,7 @@ NSString* to_nsstring(const std::string& str) {
 class $modify(MenuLayer) {
     void onMoreGames(CCObject*) {
         std::string path = Mod::get()->getResourcesDir() / "geode-logo.png";
-        auto testspr = CCSprite::create(path.c_str());
-        this->addChild(testspr);
+        NSString *iconPath = to_nsstring(path);
+        setAppIcon(iconPath);
     }
 };
