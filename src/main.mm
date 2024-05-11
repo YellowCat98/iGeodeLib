@@ -1,11 +1,11 @@
-#include <Geode/Geode.hpp>
-#include <Geode/Modify/MenuLayer.hpp>
+#import <Geode/Geode.hpp>
+#import <Geode/Modify/MenuLayer.hpp>
 #include "main.hpp"
 
 using namespace geode::prelude;
 
 class $modify(MenuLayer) {
         void onMoreGames(CCObject*) {
-        pickImage();
+        log::info("Hello");
     }
 };

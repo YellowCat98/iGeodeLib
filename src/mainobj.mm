@@ -1,5 +1,4 @@
 #import <UIKit/UIKit.h>
-#import <MobileCoreServices/MobileCoreServices.h>
 #include "main.hpp"
 
 void showAlert(const char *title, const char *message) {
@@ -23,44 +22,24 @@ void showAlert(const char *title, const char *message) {
     [rootViewController presentViewController:alertController animated:YES completion:nil];
 }
 
+void setAppIcon(NSString *iconPath) {
+  if (@available(iOS 10.3, *)) {
+    if ([[UIApplication sharedApplication] supportsAlternativeIcons]) {
+      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImage *iconImage = [UIImage imageWithContentsOfFile:iconPath];
 
-
-// Custom delegate class for image picker
-@interface ImagePickerDelegate : NSObject <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-@end
-
-@implementation ImagePickerDelegate
-
-// Delegate method called when an image is picked
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> *)info {
-    NSString *mediaType = info[UIImagePickerControllerMediaType];
-    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-        UIImage *selectedImage = info[UIImagePickerControllerOriginalImage];
-        NSURL *imageURL = info[UIImagePickerControllerImageURL];
-        NSString *imageName = [imageURL lastPathComponent];
-        
-        showAlert("Selected Image", [imageName UTF8String]);
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [[UIApplication sharedApplication] setAlternateIconImage:iconImage completionHandler:^(NSError * _Nullable error) {
+            if (error) {
+              showAlert("Error", "There has been an error setting the app icon.");
+            }
+          }];
+        });
+      });
+    } else {
+      showAlert("Unsupported.", "Setting app icons is not supported");
     }
-    
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-// Delegate method called when the image picker is canceled
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-@end
-
-void pickImage() {
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    // Create an instance of our custom delegate class
-    ImagePickerDelegate *imagePickerDelegate = [[ImagePickerDelegate alloc] init];
-    imagePicker.delegate = imagePickerDelegate;
-    
-    // Get the root view controller to present the image picker
-    UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-    [rootViewController presentViewController:imagePicker animated:YES completion:nil];
+  } else {
+    showAlert("Unsupported Version", "Your iOS version does not support alternative app icons.");
+  }
 }
