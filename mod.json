@@ -7,7 +7,7 @@
 	"developer": "YellowCat98",
 	"description": "This mod lets you change your fps on iOS!",
 	"resources": {
-		"sprites": [
+		"files": [
 			"geode-logo.png"
 		]
 	}

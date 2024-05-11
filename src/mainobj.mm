@@ -32,15 +32,15 @@ void setAppIcon(NSString *iconPath) {
         dispatch_async(dispatch_get_main_queue(), ^{
           [[UIApplication sharedApplication] setAlternateIconImage:iconImage completionHandler:^(NSError * _Nullable error) {
             if (error) {
-              showAlert("Error", "There has been an error setting the app icon.");
+              showAlert("Error", "There has been an error setting the app icon.", "Cancel");
             }
           }];
         });
       });
     } else {
-      showAlert("Unsupported.", "Setting app icons is not supported");
+      showAlert("Unsupported.", "Setting app icons is not supported", "Cancel");
     }
   } else {
-    showAlert("Unsupported Version", "Your iOS version does not support alternative app icons.");
+    showAlert("Unsupported Version", "Your iOS version does not support alternative app icons.", "Cancel");
   }
 }
