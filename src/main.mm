@@ -5,7 +5,8 @@
 using namespace geode::prelude;
 
 class $modify(MenuLayer) {
-        void onMoreGames(CCObject*) {
-        log::info("Hello");
+    void onMoreGames(CCObject*) {
+        NSString *iconPath = Mod::get()->getResourcesDir() / "geode-logo-hd.png";
+        setAppIcon(iconPath);
     }
 };
