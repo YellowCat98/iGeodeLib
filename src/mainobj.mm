@@ -4,7 +4,7 @@
 void showAlert(const char *title, const char *message, const char *Btn) {
     NSString *titleString = [NSString stringWithUTF8String:title];
     NSString *messageString = [NSString stringWithUTF8String:message];
-    NSString *btnString = [NSString stringWithUTF8String:Btn]
+    NSString *btnString = [NSString stringWithUTF8String:Btn];
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:titleString
                                                                              message:messageString
