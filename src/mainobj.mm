@@ -30,20 +30,21 @@ void pickImage() {
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-
-
-    imagePicker.delegate = (id<UIImagePickerControllerDelegate, UINavigationControllerDelegate>)^(UIImagePickerController *picker, NSDictionary<UIImagePickerControllerInfoKey, id> *info) {
-        NSString *mediaType = info[UIImagePickerControllerMediaType];
-        if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-            UIImage *selectedImage = info[UIImagePickerControllerOriginalImage];
-            NSURL *imageURL = info[UIImagePickerControllerImageURL];
-            NSString *imageName = [imageURL lastPathComponent];
+    
+    imagePicker.delegate = (id<UINavigationControllerDelegate, UIImagePickerControllerDelegate>)^(void){
+        return (void)^(UIImagePickerController *picker, NSDictionary<UIImagePickerControllerInfoKey, id> *info) {
+            NSString *mediaType = info[UIImagePickerControllerMediaType];
+            if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+                UIImage *selectedImage = info[UIImagePickerControllerOriginalImage];
+                NSURL *imageURL = info[UIImagePickerControllerImageURL];
+                NSString *imageName = [imageURL lastPathComponent];
+                
+                showAlert("Selected Image", [imageName UTF8String]);
+            }
             
-            showAlert("Selected Image", [imageName UTF8String]);
-        }
-        
-        [picker dismissViewControllerAnimated:YES completion:nil];
-    };
+            [picker dismissViewControllerAnimated:YES completion:nil];
+        };
+    }();
     
     [rootViewController presentViewController:imagePicker animated:YES completion:nil];
 }
