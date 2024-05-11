@@ -1,5 +1,4 @@
 #import <UIKit/UIKit.h>
-#import <Cocoa/Cocoa.h>
 #include "main.hpp"
 
 void showAlert(const char *title, const char *message) {
