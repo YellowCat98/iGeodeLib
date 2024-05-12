@@ -43,7 +43,7 @@ namespace iGeodeLib {
     you should probably use showAlert() instead for that.
   */ 
 
-  void CShowAlert(const char *title, const char *message, const char *Btn, std::function<void()> callback = nullptr, const char *Btn2 = nullptr, std::function<void()> callback2 = nullptr) {
+  void CShowAlert(const char *title, const char *message, const char *Btn, std::function<void()> callback, const char *Btn2, std::function<void()> callback2) {
     NSString *titleString = [NSString stringWithUTF8String:title];
     NSString *messageString = [NSString stringWithUTF8String:message];
     NSString *btnString = [NSString stringWithUTF8String:Btn];
