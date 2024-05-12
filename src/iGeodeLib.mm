@@ -3,6 +3,14 @@
 #include "iGeodeLib.hpp"
 
 /*
+very simple. converts NSString to std::string, although most functions here convert to char or std::string, this would probably come in handy in some situations.
+usage:
+auto str 
+std::string NS2S(NSString *str) {
+  return nsString ? [nsString UTF8String] : "";
+}
+*/
+/*
   shows a system level alert.
   usage:
     showAlert("Insert title here", "insert message here...", "insert button here.");
@@ -76,7 +84,7 @@ void CShowAlert(const char *title, const char *message, const char *Btn, std::fu
 
   UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
 
-  [rootViewController presentViewController:alertController animated:YES completion:nil];
+  [rootViewController presentViewController:alertController animated:YES completion:nil]; 
 }
 
 /* self explanatory, get the ios version.
@@ -88,7 +96,7 @@ void CShowAlert(const char *title, const char *message, const char *Btn, std::fu
     showAlert("Update Required", "Update to iOS 17.4", "shut up");
   }
 
-  you might need to use the to_nsstring on this to convert it to a std::string
+  you might need to use the NS2S function on this to convert it to a std::string
 
 */
 NSString* iOSVersion() {
