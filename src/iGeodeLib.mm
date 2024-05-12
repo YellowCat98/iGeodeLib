@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 #include <functional>
-#include "main.hpp"
+#include "iGeodeLib.hpp"
 
 /*
   shows a system level alert.
