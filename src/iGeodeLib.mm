@@ -1,7 +1,7 @@
+#import <UIKit/UIKit.h>
 #include <functional>
 #include "iGeodeLib.hpp"
 namespace iGeodeLib {
-
   /*
     shows a system level alert.
     usage:
