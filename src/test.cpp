@@ -6,6 +6,6 @@ using namespace geode::prelude;
 
 class $modify(MenuLayer) {
     void onMoreGames(CCObject*) {
-        CShowAlert("Hello", "hi", "go away", nullptr, "hi", nullptr);
+        iGeodeLib::CShowAlert("Hello", "hi", "go away", nullptr, "hi", nullptr);
     }
 };
