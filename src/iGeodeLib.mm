@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #include <functional>
+#include <string>
 #include "iGeodeLib.hpp"
 namespace iGeodeLib {
   /*
