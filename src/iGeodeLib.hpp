@@ -7,6 +7,6 @@
 namespace iGeodeLib {
   void showAlert(const char *title, const char *message, const char *Btn);
   std::string iOSVersion();
-  void CShowAlert(const char *title, const char *message, const char *Btn, std::function<void()> callback, const char *Btn2, std::function<void()> callback2);
+  void CShowAlert(const char *title, const char *message, const char *Btn, std::function<void()> callback = nullptr, const char *Btn2 = nullptr, std::function<void()> callback2 = nullptr);
 }
 #endif // IGEODELIB_HPP
