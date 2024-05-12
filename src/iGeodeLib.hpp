@@ -1,6 +1,5 @@
 #pragma once
 #include <functional>
-#import <Foundation/Foundation.h>
 
 void showAlert(const char *title, const char *message, const char *Btn);
 NSString *iOSVersion();
