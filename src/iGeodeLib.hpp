@@ -3,8 +3,7 @@
 
 #pragma once
 #include <functional>
-
-@class NSString;
+#import <UIKit/UIKit.h>
 
 void showAlert(const char *title, const char *message, const char *Btn);
 NSString* iOSVersion();
