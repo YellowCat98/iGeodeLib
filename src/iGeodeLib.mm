@@ -84,8 +84,10 @@ void CShowAlert(const char *title, const char *message, const char *Btn, std::fu
     showAlert("Update Required", "Update to iOS 17.4", "shut up");
   }
 
+  you might need to use the to_nsstring on this to convert it to a std::string
+
 */
-void iOSVersion() {
+NSString *iOSVersion() {
   UIDevice *device = [UIDevice currentDevice];
   NSString *iOSVersion = [device systemVersion];
   return iOSVersion;
