@@ -1,7 +1,12 @@
+#ifndef IGEODELIB_HPP
+#define IGEODELIB_HPP
+
 #pragma once
 #include <functional>
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 void showAlert(const char *title, const char *message, const char *Btn);
 NSString* iOSVersion();
 void CShowAlert(const char *title, const char *message, const char *Btn, std::function<void()> callback, const char *Btn2, std::function<void()> callback2);
+
+#endif // IGEODELIB_HPP
