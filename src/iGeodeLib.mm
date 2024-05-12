@@ -34,9 +34,13 @@ void showAlert(const char *title, const char *message, const char *Btn) {
   CShowAlert("Title", "Message", "go away", MyCoolFunction());
   - this function allows you to add 2 buttons!!!
   usage: (again)
-  CShowAlert("Title", "Message", "go away", nullptr, "go away again");
+  CShowAlert("Title", "Message", "go away", nullptr, "go away again", nullptr);
   this should give you an alert with 2 buttons and no callback at al!!!!;
-*/
+  or alternatively
+  CShowAlert("Title", "Message", "go away", nullptr, nullptr, nullptr);
+  this should give you one button, with NO callback...
+  you should probably use showAlert() instead for that.
+*/ 
 
 void CShowAlert(const char *title, const char *message, const char *Btn, std::function<void()> callback = nullptr, const char *Btn2 = nullptr, std::function<void()> callback2 = nullptr) {
   NSString *titleString = [NSString stringWithUTF8String:title];
