@@ -2,13 +2,8 @@
 	"geode": "2.0.0-beta.25",
 	"gd": "2.205",
 	"version": "v1.0.0",
-	"id": "yellowcat98.ifpshack",
-	"name": "iFPSHack",
+	"id": "yellowcat98.igeodelib",
+	"name": "iGeodeLib",
 	"developer": "YellowCat98",
-	"description": "This mod lets you change your fps on iOS!",
-	"resources": {
-		"files": [
-			"resources/geode-logo.png"
-		]
-	}
+	"description": "This mod lets you change your fps on iOS!"
 }

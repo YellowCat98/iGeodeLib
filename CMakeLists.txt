@@ -15,9 +15,9 @@ if(${GEODE_TARGET_PLATFORM} STREQUAL "iOS")
 endif()
 
 add_library(${PROJECT_NAME} SHARED
-    src/main.mm
-    src/mainobj.mm
-    src/main.hpp
+    src/iGeodeLib.mm
+    src/test.cpp
+    src/iGeodeLib.hpp
 )
 
 if (NOT DEFINED ENV{GEODE_SDK})
