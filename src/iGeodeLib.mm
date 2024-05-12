@@ -91,7 +91,7 @@ void CShowAlert(const char *title, const char *message, const char *Btn, std::fu
   you might need to use the to_nsstring on this to convert it to a std::string
 
 */
-NSString *iOSVersion() {
+NSString* iOSVersion() {
   UIDevice *device = [UIDevice currentDevice];
   NSString *iOSVersion = [device systemVersion];
   return iOSVersion;
