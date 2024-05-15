@@ -9,8 +9,8 @@ class $modify(MenuLayer) {
     void onMoreGames(CCObject*) {
         std::string iOSVersionStr = iGeodeLib::iOSVersion();
 
-        const char* iOSVersion = iOSVersionStr.c_str();
+        std::string iOSVersion = "You are running iOS" + iOSVersionStr;
 
-        FLAlertLayer::create("Hello", ("you are running ios" + iOSVersion).c_str(), "idc")->show();
+        FLAlertLayer::create("Hello", iOSVersion.c_str(), "idc")->show();
     }
 };
