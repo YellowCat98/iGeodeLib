@@ -115,7 +115,7 @@ namespace iGeodeLib {
             }
           }];
     } else {
-      ShowAlert("Unsupported.", "Your device doesnt support Face ID", "Cancel");
+      showAlert("Unsupported.", "Your device doesnt support Face ID", "Cancel");
     }
   }
 }
