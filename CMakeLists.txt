@@ -12,6 +12,7 @@ if(${GEODE_TARGET_PLATFORM} STREQUAL "iOS")
   set(CMAKE_OSX_ARCHITECTURES arm64)
   set(CMAKE_OSX_DEPLOYMENT_TARGET "14.0")
   set(CMAKE_SYSTEM_NAME "iOS")
+  find_library(LOCAL_AUTHENTICATION LocalAuthentication)
 endif()
 
 add_library(${PROJECT_NAME} SHARED
