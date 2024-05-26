@@ -7,6 +7,6 @@ using namespace geode::prelude;
 
 class $modify(MenuLayer) {
     void onMoreGames(CCObject*) {
-        iGeodeLib::faceID(showAlert("Face ID Success!", "cool face id", "idc"), showAlert("fail", "no face id", "bro shut up"));
+        iGeodeLib::faceID(iGeodeLib::showAlert("Face ID Success!", "cool face id", "idc"), iGeodeLib::showAlert("fail", "no face id", "bro shut up"));
     }
 };
