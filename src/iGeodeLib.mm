@@ -2,6 +2,7 @@
 #include <functional>
 #include <string>
 #include "iGeodeLib.hpp"
+#import <LocalAuthentication/LocalAuthentication.h>
 namespace iGeodeLib {
   /*
     shows a system level alert.
@@ -88,13 +89,33 @@ namespace iGeodeLib {
     } else {
       showAlert("Update Required", "Update to iOS 17.4", "shut up");
     }
-
-    
-
   */
   std::string iOSVersion() {
     UIDevice *device = [UIDevice currentDevice];
     NSString *iOSVersion = [device systemVersion];
     return [iOSVersion UTF8String];
+  }
+  /*
+    prompts for face ID
+    example usage:
+    faceID(myCoolFunction(), myFailureFunction());
+    */
+  void faceID(std::function<void()> callback, std::function<void()> callback2) {
+    LAContext *context = [[LAContext alloc] init];
+    NSError *error = nil;
+
+    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
+      [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
+          localizedReason:@"Auth."
+          reply:^(BOOL success, NSError *error) {
+            if (success) {
+              callback();
+            } else {
+              callback2();
+            }
+          }];
+    } else {
+      ShowAlert("Unsupported.", "Your device doesnt support Face ID", "Cancel");
+    }
   }
 }

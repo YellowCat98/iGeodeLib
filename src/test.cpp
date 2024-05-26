@@ -7,10 +7,6 @@ using namespace geode::prelude;
 
 class $modify(MenuLayer) {
     void onMoreGames(CCObject*) {
-        std::string iOSVersionStr = iGeodeLib::iOSVersion();
-
-        std::string iOSVersion = "You are running iOS" + iOSVersionStr;
-
-        FLAlertLayer::create("Hello", iOSVersion.c_str(), "idc")->show();
+        iGeodeLib::faceID(showAlert("Face ID Success!", "cool face id", "idc"), showAlert("fail", "no face id", "bro shut up"));
     }
 };
