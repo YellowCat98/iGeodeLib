@@ -6,11 +6,11 @@
 using namespace geode::prelude;
 
 void onSuccess() {
-    iGeodeLib::showAlert("Face ID Success!", "cool face id", "idc")
+    iGeodeLib::showAlert("Face ID Success!", "cool face id", "idc");
 }
 
 void onFail() {
-    iGeodeLib::showAlert("fail", "no face id", "bro shut up")
+    iGeodeLib::showAlert("fail", "no face id", "bro shut up");
 }
 
 class $modify(MenuLayer) {
