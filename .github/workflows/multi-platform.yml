@@ -26,6 +26,9 @@ jobs:
       - name: Setup CLI
         uses: geode-catgirls/build-geode-mod/ios-cli-setup@main
 
+      - name: idk extract cli
+        run: 7z x -y my-epic-geode-cli/geode-cli-v3.2.0-mac.zip -o./my-epic-geode-cli
+
       - name: Build the mod
         #uses: geode-sdk/build-geode-mod@main
         uses: geode-catgirls/build-geode-mod@main
