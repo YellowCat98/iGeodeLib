@@ -27,7 +27,7 @@ jobs:
 
       - name: Build the mod
         #uses: geode-sdk/build-geode-mod@main
-        uses: geode-catgirls/build-geode-mod@b919a6f7ec59811b474919f661e87bcf9c8349dd
+        uses: YellowCat98/build-geode-mod@main
         with:
           bindings: YellowCat98/geode-bindings
           bindings-ref: main
@@ -41,7 +41,7 @@ jobs:
 
     steps:
       #- uses: geode-sdk/build-geode-mod/combine@main
-      - uses: geode-catgirls/build-geode-mod/combine@b919a6f7ec59811b474919f661e87bcf9c8349dd
+      - uses: YellowCat98/build-geode-mod/combine@main
         id: build
 
       - uses: actions/upload-artifact@v4
