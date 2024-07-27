@@ -95,27 +95,4 @@ namespace iGeodeLib {
     NSString *iOSVersion = [device systemVersion];
     return [iOSVersion UTF8String];
   }
-  /*
-    prompts for face ID
-    example usage:
-    faceID(myCoolFunction(), myFailureFunction());
-    */
-  void faceID(std::function<void()> callback, std::function<void()> callback2) {
-    LAContext *context = [[LAContext alloc] init];
-    NSError *error = nil;
-
-    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
-      [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-          localizedReason:@"Auth."
-          reply:^(BOOL success, NSError *error) {
-            if (success) {
-              callback();
-            } else {
-              callback2();
-            }
-          }];
-    } else {
-      showAlert("Unsupported.", "Your device doesnt support Face ID", "Cancel");
-    }
-  }
 }

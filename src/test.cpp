@@ -15,6 +15,6 @@ void onFail() {
 
 class $modify(MenuLayer) {
     void onMoreGames(CCObject*) {
-        iGeodeLib::faceID(onSuccess, onFail);
+        
     }
 };
