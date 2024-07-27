@@ -23,6 +23,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup CLI
+        uses: geode-catgirls/build-geode-mod/ios-cli-setup@main
+
       - name: Build the mod
         #uses: geode-sdk/build-geode-mod@main
         uses: geode-catgirls/build-geode-mod@main
