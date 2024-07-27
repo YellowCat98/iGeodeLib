@@ -1,9 +1,11 @@
 {
-	"geode": "2.0.0-beta.26",
-	"gd": "2.205",
+	"geode": "3.3.0",
+	"gd": {
+		"ios": "2.206"
+	},
 	"version": "v1.0.0",
 	"id": "yellowcat98.igeodelib",
 	"name": "iGeodeLib",
 	"developer": "YellowCat98",
-	"description": "This mod lets you change your fps on iOS!"
+	"description": "utilities for devs to escape objective c++"
 }
