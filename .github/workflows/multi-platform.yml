@@ -23,15 +23,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup CLI
-        uses: geode-catgirls/build-geode-mod/ios-cli-setup@main
 
-      - name: idk extract cli
-        run: 7z x -y my-epic-geode-cli/geode-cli-v3.2.0-mac.zip -o./my-epic-geode-cli
 
       - name: Build the mod
         #uses: geode-sdk/build-geode-mod@main
-        uses: geode-catgirls/build-geode-mod@main
+        uses: geode-catgirls/build-geode-mod@b919a6f
         with:
           bindings: YellowCat98/geode-bindings
           bindings-ref: main
@@ -45,7 +41,7 @@ jobs:
 
     steps:
       #- uses: geode-sdk/build-geode-mod/combine@main
-      - uses: geode-catgirls/build-geode-mod/combine@main
+      - uses: geode-catgirls/build-geode-mod/combine@b919a6f
         id: build
 
       - uses: actions/upload-artifact@v4
